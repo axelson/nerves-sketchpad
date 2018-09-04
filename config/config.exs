@@ -27,7 +27,7 @@ config :logger, backends: [RingLogger]
 # on configuring nerves_firmware_ssh.
 
 key = Path.join(System.user_home!, ".ssh/id_rsa.pub")
-unless File.exists?(key), do: 
+unless File.exists?(key), do:
   Mix.raise("No SSH Keys found. Please generate an ssh key")
 
 config :nerves_firmware_ssh,
@@ -45,6 +45,11 @@ config :nerves_init_gadget,
   node_name: "kiosk",
   node_host: :mdns_domain,
   ssh_console_port: 22
+
+config :webengine_kiosk,
+  uid: "kiosk",
+  gid: "kiosk",
+  data_dir: "/root/kiosk"
 
 # Import target specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
