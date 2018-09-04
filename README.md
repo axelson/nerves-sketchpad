@@ -1,6 +1,6 @@
 # NervesKiosk
 
-**TODO: Add description**
+QMAKE=/usr/local/opt/qt/bin/qmake mix compile
 
 ## Targets
 
