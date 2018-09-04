@@ -40,7 +40,7 @@ config :nerves_firmware_ssh,
 
 config :nerves_init_gadget,
   ifname: "eth0",
-  address_method: :dhcpcd,
+  address_method: :dhcpd,
   mdns_domain: "nerves.local",
   node_name: "kiosk",
   node_host: :mdns_domain,
