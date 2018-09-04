@@ -15,7 +15,7 @@ config :nerves, :firmware, rootfs_overlay: "rootfs_overlay"
 config :shoehorn,
   init: [:nerves_runtime, :nerves_init_gadget],
   app: Mix.Project.config()[:app]
-  
+
 # Use Ringlogger as the logger backend and remove :console.
 # See https://hexdocs.pm/ring_logger/readme.html for more information on
 # configuring ring_logger.
@@ -39,10 +39,10 @@ config :nerves_firmware_ssh,
 # See https://hexdocs.pm/nerves_init_gadget/readme.html for more information.
 
 config :nerves_init_gadget,
-  ifname: "usb0",
-  address_method: :linklocal,
+  ifname: "eth0",
+  address_method: :dhcpcd,
   mdns_domain: "nerves.local",
-  node_name: nil,
+  node_name: "kiosk",
   node_host: :mdns_domain,
   ssh_console_port: 22
 
