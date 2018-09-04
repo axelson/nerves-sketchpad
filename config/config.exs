@@ -26,9 +26,8 @@ config :logger, backends: [RingLogger]
 # See https://hexdocs.pm/nerves_firmware_ssh/readme.html for more information
 # on configuring nerves_firmware_ssh.
 
-key = Path.join(System.user_home!, ".ssh/id_rsa.pub")
-unless File.exists?(key), do:
-  Mix.raise("No SSH Keys found. Please generate an ssh key")
+key = Path.join(System.user_home!(), ".ssh/id_rsa.pub")
+unless File.exists?(key), do: Mix.raise("No SSH Keys found. Please generate an ssh key")
 
 config :nerves_firmware_ssh,
   authorized_keys: [
@@ -50,6 +49,17 @@ config :webengine_kiosk,
   uid: "kiosk",
   gid: "kiosk",
   data_dir: "/root/kiosk"
+
+config :phx_kiosk, PhxKioskWeb.Endpoint,
+  url: [host: "localhost"],
+  http: [port: 80],
+  secret_key_base: "123456",
+  root: Path.dirname(__DIR__),
+  server: true,
+  render_errors: [view: PhxKioskWeb.ErrorView, accepts: ~w(html json)],
+  pubsub: [name: Nerves.PubSub, adapter: Phoenix.PubSub.PG2],
+  code_reloader: false,
+  check_origin: false
 
 # Import target specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
