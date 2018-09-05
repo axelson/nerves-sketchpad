@@ -1,5 +1,7 @@
 # NervesKiosk
 
+Runs as a poncho project with: https://github.com/chrismccord/sketchpad
+
 QMAKE=/usr/local/opt/qt/bin/qmake mix compile
 
 On the host:
