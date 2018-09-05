@@ -52,7 +52,7 @@ defmodule NervesKiosk.MixProject do
       {:nerves_runtime, "~> 0.6"},
       {:nerves_init_gadget, "~> 0.4"},
       {:nerves_time, "~> 0.2"},
-      {:phx_kiosk, path: "../phx_kiosk"}
+      {:sketchpad, path: "../sketchpad"}
     ] ++ system(target)
   end
 

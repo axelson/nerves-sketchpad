@@ -2,6 +2,10 @@
 
 QMAKE=/usr/local/opt/qt/bin/qmake mix compile
 
+On the host:
+
+    iex --cookie training --name host@172.16.178.102 -S mix phx.server
+
 ## Targets
 
 Nerves applications produce images for hardware targets based on the

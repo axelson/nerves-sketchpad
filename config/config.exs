@@ -48,18 +48,41 @@ config :nerves_init_gadget,
 config :webengine_kiosk,
   uid: "kiosk",
   gid: "kiosk",
-  data_dir: "/root/kiosk"
+  data_dir: "/root/kiosk",
+  homepage: "http://localhost:80"
 
-config :phx_kiosk, PhxKioskWeb.Endpoint,
+config :sketchpad, SketchpadWeb.Endpoint,
   url: [host: "localhost"],
   http: [port: 80],
-  secret_key_base: "123456",
-  root: Path.dirname(__DIR__),
+  secret_key_base: "BCqHloAfzORpn/TX90PB9GULWVRZpjwegD4U8T1on/RUmEYTjkVGLC2YKFhkhLiS",
   server: true,
-  render_errors: [view: PhxKioskWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: Nerves.PubSub, adapter: Phoenix.PubSub.PG2],
+  render_errors: [view: SketchpadWeb.ErrorView, accepts: ~w(html json)],
+  pubsub: [name: Sketchpad.PubSub, adapter: Phoenix.PubSub.PG2],
   code_reloader: false,
   check_origin: false
+  # pubsub: [name: Nerves.PubSub, adapter: Phoenix.PubSub.PG2],
+
+config :phoenix, :json_library, Jason
+config :ecto, :json_library, Jason
+
+# config :sketchpad, SketchpadWeb.Endpoint,
+#   http: [port: 4000],
+#   debug_errors: true,
+#   code_reloader: true,
+#   check_origin: false,
+#   watchers: [node: ["node_modules/webpack/bin/webpack.js", "--mode", "development", "--watch-stdin", "--colors",
+#                     cd: Path.expand("../assets", __DIR__)]]
+
+# # Watch static and templates for browser reloading.
+# config :sketchpad, SketchpadWeb.Endpoint,
+#   live_reload: [
+#     patterns: [
+#       ~r{priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$},
+#       ~r{priv/gettext/.*(po)$},
+#       ~r{web/views/.*(ex)$},
+#       ~r{web/templates/.*(eex)$}
+#     ]
+#   ]
 
 # Import target specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
